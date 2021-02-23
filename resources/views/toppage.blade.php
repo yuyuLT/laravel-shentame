@@ -14,7 +14,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">タイムライン</div>
+                <div class="card-header">動画一覧</div>
                     <div class="form-container">
                         <div class="form-b-container">
                             <form method="GET" action="{{route('submit')}}">
