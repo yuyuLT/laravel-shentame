@@ -16,7 +16,7 @@ class MyPageController extends Controller
     public function show($user_name)
     {
         $query = DB::table('entame_info')->where('user_name', $user_name)->orderBy('id', 'desc');;
-        $datas = $query->paginate(10);
+        $datas = $query->paginate(5);
         return view('mypage',compact('datas','user_name'));    
     }   
 }
