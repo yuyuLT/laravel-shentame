@@ -5,7 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">動画登録</div>
+                <div class="card-header title_big">動画登録</div>
+                <form method="GET" action="{{route('toppage')}}" class="form-inline">
+                <div class="container bg-light">
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary" >動画一覧へ戻る</button>
+                        </div>
+                    </div>
+                </form>
 
                 <!-- エラーチェック -->
                 @if ($errors->any())

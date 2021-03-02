@@ -2,18 +2,21 @@
 @extends('layouts.app')
 
 @section('content')
-<head>
-<style>
-.element {
-  width: 130px;
-}
-</style>
-</head>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">動画詳細</div>
+                <div class="card-header title_big">動画詳細</div>
+                <form method="GET" action="{{route('toppage')}}" class="form-inline">
+                <div class="container bg-light">
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary" >動画一覧へ戻る</button>
+                        </div>
+                    </div>
+                </form>
+               
+               
+              
                 <table class="table">
                     <tbody>
                         <tr valign="middle">
@@ -42,18 +45,18 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <form method = "POST" action="{{route('comment')}}" class="bg-light">
-                    @csrf
-                    <br>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">コメントを入力</label>
-                        <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder=""></textarea>
-                        <input type="hidden" name="id" value ="{{$id}}">                        
-                    </div>
-                    <input class="btn btn-info" type="submit" value="コメントする">
-                </form>
-                
+        
+                    <form method = "POST" action="{{route('comment')}}" class="bg-light">
+                        @csrf
+                        <br>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">コメントを入力</label>
+                            <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder=""></textarea>
+                            <input type="hidden" name="id" value ="{{$id}}">                        
+                        </div>
+                        <input class="btn btn-info" type="submit" value="コメントする">
+                    </form>
+                  
                 <br>
 
                 コメント一覧

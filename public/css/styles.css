@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+.title_big{
+    font-size: 30px;
+}
+
+.form-a-container,
+.form-b-container {
+    float:left;
+    width:12%;
+}
+
+.element {
+    width: 130px;
+  }
+
+

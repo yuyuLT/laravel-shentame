@@ -2,19 +2,11 @@
 @extends('layouts.app')
 
 @section('content')
-
-<style type="text/css">
-.form-a-container,
-.form-b-container {
-    float:left;
-    width:12%;
-}
-</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">動画一覧</div>
+                <div class="card-header title_big">動画一覧 </div>
                     <div class="form-container">
                         <div class="form-b-container">
                             <form method="GET" action="{{route('submit')}}">

@@ -5,8 +5,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">{{$user_name}}さんの登録動画</div>
+        <div class="card">
+                <div class="card-header title_big">{{$user_name}}さんの登録動画</div>
+                <form method="GET" action="{{route('toppage')}}" class="form-inline">
+                <div class="container bg-light">
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary" >動画一覧へ戻る</button>
+                        </div>
+                    </div>
+                </form>
                 <table class="table" >
                         <thead class="thead-dark">
                             <tr valign="middle">
