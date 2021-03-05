@@ -41,15 +41,22 @@ Route::group(['middleware' => ['auth']], function() {
 //トップページ
 Route::get('toppage','TopPageController@index')->name('toppage');
 
+//詳細ページ
+Route::get('detail/{id}', 'DetailController@show')->name('detail');
+
+//編集ページ
+Route::get('edit/{id}', 'EditController@edit')->name('edit');
+Route::post('update/{id}', 'EditController@update')->name('update');
+
+//削除ページ
+Route::post('delete/{id}', 'TopPageController@delete')->name('delete');
+
 //マイページ
 Route::get('mypage/{user_name}','MyPageController@show')->name('mypage');
 
 //投稿ページ
 Route::get('submit','SubmitController@index')->name('submit');
 Route::post('store','SubmitController@store')->name('store');
-
-//詳細ページ
-Route::get('detail/{id}', 'DetailController@show')->name('detail');
 
 //コメントページ
 Route::post('comment', 'CommentController@store')->name('comment');

@@ -32,34 +32,60 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">タイトル</th>
                                 <th scope="col">動画</th>
-                                <th scope="col">詳細</th>
                                 <th scope="col">登録ユーザ</th>
-                                <th scope="col" class="d-none">感想</th>
-                                <th scope="col" class="d-none">登録日時</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($datas as $data)
                             <tr valign="middle">
-                                <td>{{$loop->index + 1}}</td>
-                                <td>{{$data->title}}</td>
-                                <td>{!!TopPageForm::youtubeConvert($data->link)!!}</td>
-                                <td><a href="{{route('detail',['id'=>$data->id])}}">動画詳細</a></td>
-                                <td><a href="{{route('mypage',['user_name'=>$data->user_name])}}">{{$data->user_name}}</a></td>
-                                <td class="d-none">{{$data->thought}}</td>
-                                <td class="d-none">{{$data->created_at}}</td>
+                                <td rowspan="3">{{$loop->index + 1}}</td>
+                                <td rowspan="3">{{$data->title}}</td>
+                                <td rowspan="3">{!!TopPageForm::youtubeConvert($data->link)!!}</td>
+                                <td rowspan="3"><a href="{{route('mypage',['user_name'=>$data->user_name])}}">{{$data->user_name}}</a></td>
+                                <td>
+                                    <form method = "GET" action="{{route('detail',['id'=>$data->id])}}" class="form-inline my-2 my-lg-0">
+                                        @csrf
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">詳細</button>
+                                        </span>
+                                    </form>    
+                                </td>
+                            <tr valign="middle">
+                                <td>
+                                    <form method = "GET" action="{{route('edit',['id'=>$data->id])}}" class="form-inline my-2 my-lg-0">
+                                        @csrf
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">編集</button>
+                                        </span>
+                                    </form>
+                                </td>
                             </tr>
-                            @endforeach
+                            <tr valign="middle">
+                                <td>
+                                    <form method = "POST" action="{{route('delete',['id'=>$data->id])}}" id="delete_{{$data->id}}" class="form-inline my-2 my-lg-0">
+                                        @csrf
+                                            <a href="#" class="btn btn-danger my-2 my-sm-0" data-id = "{{$data->id}}" onclick="deletePost(this);">
+                                                削除</a>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                       {{ $datas->links() }}
                     
-            
-                    <div class="card-body"></div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+function deletePost(e){
+    'use strict';
+    if(confirm('本当に削除していいですか？')){
+        document.getElementById('delete_' + e.dataset.id).submit();  
+    }
+}
+</script>
 @endsection
-
-

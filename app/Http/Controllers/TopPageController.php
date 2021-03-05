@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubmitForm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -39,4 +40,11 @@ class TopPageController extends Controller
         return view('toppage',compact('datas'));
     }
 
+    public function delete($id)
+    {
+        $datas = SubmitForm::find($id);
+        $datas->delete();
+
+        return redirect('toppage');
+    }
 }
