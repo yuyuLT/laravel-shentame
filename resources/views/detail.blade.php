@@ -37,7 +37,7 @@
                         </tr>
                         <tr valign="middle">
                             <td class="element">登録ユーザ名</td>
-                            <td>{{$datas->user_name}}</td>
+                            <td>{{$datas->name}}</td>
                         </tr>
                         <tr valign="middle">
                             <td class="element">登録日時</td>
@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">コメントを入力</label>
                             <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder=""></textarea>
-                            <input type="hidden" name="id" value ="{{$id}}">                        
+                            <input type="hidden" name="id" value ="{{$video_id}}">                        
                         </div>
                         <input class="btn btn-info" type="submit" value="コメントする">
                     </form>

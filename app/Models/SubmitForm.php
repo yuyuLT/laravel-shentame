@@ -8,4 +8,6 @@ class SubmitForm extends Model
 {
     protected $table = 'entame_info';
     
+    protected $primaryKey = 'video_id';
+    
 }

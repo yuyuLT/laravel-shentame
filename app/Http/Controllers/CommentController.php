@@ -23,6 +23,6 @@ class CommentController extends Controller
         $datas->detail_id = $request->input('id');
         $datas->save();
 
-        return redirect()->route('detail', ['id' => $datas->detail_id]);
+        return redirect()->route('detail', ['video_id' => $datas->detail_id]);
     }
 }

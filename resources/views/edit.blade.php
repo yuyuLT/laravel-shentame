@@ -15,7 +15,7 @@
                     </div>
                 </form>
 
-                <form method = "POST" action="{{route('update',['id'=>$data->id])}}">
+                <form method = "POST" action="{{route('update',['video_id'=>$data->video_id])}}">
                 @csrf
                     <div class="form-group">
                         {!!TopPageForm::youtubeConvert($data->link)!!}

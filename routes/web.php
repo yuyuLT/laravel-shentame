@@ -42,17 +42,17 @@ Route::group(['middleware' => ['auth']], function() {
 Route::get('toppage','TopPageController@index')->name('toppage');
 
 //詳細ページ
-Route::get('detail/{id}', 'DetailController@show')->name('detail');
+Route::get('detail/{video_id}', 'DetailController@show')->name('detail');
 
 //編集ページ
-Route::get('edit/{id}', 'EditController@edit')->name('edit');
-Route::post('update/{id}', 'EditController@update')->name('update');
+Route::get('edit/{video_id}', 'EditController@edit')->name('edit');
+Route::post('update/{video_id}', 'EditController@update')->name('update');
 
 //削除ページ
-Route::post('delete/{id}', 'TopPageController@delete')->name('delete');
+Route::post('delete/{video_id}', 'TopPageController@delete')->name('delete');
 
 //マイページ
-Route::get('mypage/{user_name}','MyPageController@show')->name('mypage');
+Route::get('mypage/{user_id}','MyPageController@show')->name('mypage');
 
 //投稿ページ
 Route::get('submit','SubmitController@index')->name('submit');

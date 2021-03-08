@@ -18,7 +18,9 @@ class TopPageController extends Controller
         $search = $request->input('search');
 
         //検索フォーム用
-        $query = DB::table('entame_info')->orderBy('id', 'desc');
+        $query = DB::table('entame_info')
+        ->leftJoin('users', 'entame_info.user_id', '=', 'users.id')
+        ->orderBy('video_id', 'desc');
 
         //検索処理
         if($search !== null){
@@ -40,9 +42,10 @@ class TopPageController extends Controller
         return view('toppage',compact('datas'));
     }
 
-    public function delete($id)
+    public function delete($video_id)
     {
-        $datas = SubmitForm::find($id);
+
+        $datas = SubmitForm::find($video_id);
         $datas->delete();
 
         return redirect('toppage');

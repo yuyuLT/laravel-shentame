@@ -28,7 +28,7 @@ class SubmitController extends Controller
     public function store(StoreInfoForm $request)
     {
         $data = new SubmitForm; 
-        $data->user_name = Auth::user()->name;
+        $data->user_id = Auth::user()->id;
         $data->title = $request->input('title');
         $data->link = $request->input('link');
         $data->thought = $request->input('thought');

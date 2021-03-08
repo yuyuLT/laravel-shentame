@@ -31,7 +31,7 @@
                                 <td>{{$loop->index + 1}}</td>
                                 <td>{{$data->title}}</td>
                                 <td>{!!TopPageForm::youtubeConvert($data->link)!!}</td>
-                                <td><a href="{{route('detail',['id'=>$data->id])}}">動画詳細</a></td>
+                                <td><a href="{{route('detail',['video_id'=>$data->video_id])}}">動画詳細</a></td>
                                 <td class="d-none">{{$data->thought}}</td>
                                 <td class="d-none">{{$data->created_at}}</td>
                             </tr>

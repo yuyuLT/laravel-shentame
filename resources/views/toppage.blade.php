@@ -42,9 +42,9 @@
                                 <td rowspan="3">{{$loop->index + 1}}</td>
                                 <td rowspan="3">{{$data->title}}</td>
                                 <td rowspan="3">{!!TopPageForm::youtubeConvert($data->link)!!}</td>
-                                <td rowspan="3"><a href="{{route('mypage',['user_name'=>$data->user_name])}}">{{$data->user_name}}</a></td>
+                                <td rowspan="3"><a href="{{route('mypage',['user_id'=>$data->user_id])}}">{{$data->name}}</a></td>
                                 <td>
-                                    <form method = "GET" action="{{route('detail',['id'=>$data->id])}}" class="form-inline my-2 my-lg-0">
+                                    <form method = "GET" action="{{route('detail',['video_id'=>$data->video_id])}}" class="form-inline my-2 my-lg-0">
                                         @csrf
                                         <span class="input-group-btn">
                                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">詳細</button>
@@ -53,7 +53,7 @@
                                 </td>
                             <tr valign="middle">
                                 <td>
-                                    <form method = "GET" action="{{route('edit',['id'=>$data->id])}}" class="form-inline my-2 my-lg-0">
+                                    <form method = "GET" action="{{route('edit',['video_id'=>$data->video_id])}}" class="form-inline my-2 my-lg-0">
                                         @csrf
                                         <span class="input-group-btn">
                                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">編集</button>
@@ -63,9 +63,9 @@
                             </tr>
                             <tr valign="middle">
                                 <td>
-                                    <form method = "POST" action="{{route('delete',['id'=>$data->id])}}" id="delete_{{$data->id}}" class="form-inline my-2 my-lg-0">
+                                    <form method = "POST" action="{{route('delete',['video_id'=>$data->video_id])}}" id="delete_{{$data->video_id}}" class="form-inline my-2 my-lg-0">
                                         @csrf
-                                            <a href="#" class="btn btn-danger my-2 my-sm-0" data-id = "{{$data->id}}" onclick="deletePost(this);">
+                                            <a href="#" class="btn btn-danger my-2 my-sm-0" data-id = "{{$data->video_id}}" onclick="deletePost(this);">
                                                 削除</a>
                                     </form>
                                 </td>
