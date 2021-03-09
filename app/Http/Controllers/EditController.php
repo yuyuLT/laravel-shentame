@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 use App\Models\SubmitForm;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,14 @@ class EditController extends Controller
         ->where('video_id', $video_id)
         ->first();
 
-        return view('edit', compact('data'));
+        //登録者本人であれば編集可能,そうでなければトップページへ
+        if(Auth::user()->id == $data->user_id){
+            return view('edit', compact('data'));
+        }else{
+            return redirect('toppage');
+        }
+
+        
     }
 
     public function update(Request $request, $video_id)

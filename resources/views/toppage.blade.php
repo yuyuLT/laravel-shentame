@@ -1,4 +1,8 @@
-<?php use App\Models\TopPageForm; ?>
+<?php 
+use App\Models\TopPageForm; 
+use Illuminate\Support\Facades\Auth; 
+$login_id = Auth::user()->id
+?>
 @extends('layouts.app')
 
 @section('content')
@@ -38,6 +42,13 @@
                         </thead>
                         <tbody>
                             @foreach($datas as $data)
+                            <?php $roland = '';
+                                if($data->user_id == $login_id){
+                                    $roland = "true";
+                                }else{
+                                    $roland = "false";
+                                }
+                            ?>
                             <tr valign="middle">
                                 <td rowspan="3">{{$loop->index + 1}}</td>
                                 <td rowspan="3">{{$data->title}}</td>
@@ -47,7 +58,7 @@
                                     <form method = "GET" action="{{route('detail',['video_id'=>$data->video_id])}}" class="form-inline my-2 my-lg-0">
                                         @csrf
                                         <span class="input-group-btn">
-                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">詳細</button>
+                                            <button class="btn btn-success my-2 my-sm-0" type="submit">詳細</button>
                                         </span>
                                     </form>    
                                 </td>
@@ -56,7 +67,12 @@
                                     <form method = "GET" action="{{route('edit',['video_id'=>$data->video_id])}}" class="form-inline my-2 my-lg-0">
                                         @csrf
                                         <span class="input-group-btn">
-                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">編集</button>
+                                            <button  
+                                            <?php if ($roland == "false") { ?> class="btn btn-secondary my-2 my-sm-0" disabled
+                                            <?php }else{ ?>
+                                                class="btn btn-success my-2 my-sm-0" type="submit"　 
+                                            <?php } ?>
+                                        >編集</button>
                                         </span>
                                     </form>
                                 </td>
@@ -65,8 +81,13 @@
                                 <td>
                                     <form method = "POST" action="{{route('delete',['video_id'=>$data->video_id])}}" id="delete_{{$data->video_id}}" class="form-inline my-2 my-lg-0">
                                         @csrf
-                                            <a href="#" class="btn btn-danger my-2 my-sm-0" data-id = "{{$data->video_id}}" onclick="deletePost(this);">
-                                                削除</a>
+                                            <a   
+                                            <?php if ($roland == "true") { ?> 
+                                                href="#" class="btn btn-danger my-2 my-sm-0" data-id = "{{$data->video_id}}" onclick="deletePost(this);" 
+                                            <?php }else{ ?>
+                                                class="btn btn-secondary my-2 my-sm-0" 
+                                            <?php } ?>
+                                            >削除</a>
                                     </form>
                                 </td>
                             </tr>

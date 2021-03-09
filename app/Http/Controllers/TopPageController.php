@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SubmitForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\DB;
 
 class TopPageController extends Controller
@@ -44,9 +45,12 @@ class TopPageController extends Controller
 
     public function delete($video_id)
     {
-
         $datas = SubmitForm::find($video_id);
-        $datas->delete();
+    
+         //登録者本人であれば削除
+         if(Auth::user()->id == $datas->user_id){
+            $datas->delete();
+        }
 
         return redirect('toppage');
     }
