@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlInput1">リンク</label>
-                        <input name="link" type="url" class="form-control" id="exampleFormControlInput1" placeholder="リンクをコピペしてください">
+                        <input name="link" type="url" class="form-control" id="exampleFormControlInput1" placeholder="https://www.youtube.com/watch">
                     </div>
                     <br>
 

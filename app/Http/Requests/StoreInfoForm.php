@@ -25,8 +25,16 @@ class StoreInfoForm extends FormRequest
     {
         return [
             'title' => 'required',
-            'link' => 'required|url',
+            'link' => 'required|url|starts_with:https://www.youtube.com/watch',
             'thought' => 'required'
         ];
+        
     }
+    
+    public function messages()
+    {
+        return  [
+        'link.starts_with' => '正しい形式のURLを貼り付けてください'];
+    }
+
 }
